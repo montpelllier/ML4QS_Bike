@@ -35,10 +35,10 @@ class CreateDataset:
         if not prefix == '':
             for i in range(0, len(c)):
                 c[i] = str(prefix) + str(c[i])
-        timestamps = self.create_timestamps(start_time, end_time)
-
-        #Specify the datatype here to prevent an issue
-        self.data_table = pd.DataFrame(index=timestamps, columns=c, dtype=object)
+        # timestamps = self.create_timestamps(start_time, end_time)
+        time = np.arange(start_time, end_time, self.granularity / 1000)
+        # Specify the datatype here to prevent an issue
+        self.data_table = pd.DataFrame(index=time, columns=c, dtype=object)
 
     # Add numerical data, we assume timestamps in the form of nanoseconds from the epoch
     def add_numerical_dataset(self, file, timestamp_col, value_cols, aggregation='avg', prefix=''):
@@ -46,7 +46,9 @@ class CreateDataset:
         dataset = pd.read_csv(self.base_dir / file, skipinitialspace=True)
 
         # Convert timestamps to dates
-        dataset[timestamp_col] = pd.to_datetime(dataset[timestamp_col])
+        # epoch = datetime(1970, 1, 1)
+        # dataset[timestamp_col] = dataset[timestamp_col].apply(lambda x: epoch + timedelta(seconds=x))
+        # dataset[timestamp_col] = pd.to_datetime(dataset[timestamp_col])
 
         # Create a table based on the times found in the dataset
         if self.data_table is None:
@@ -60,8 +62,7 @@ class CreateDataset:
             # Select the relevant measurements.
             relevant_rows = dataset[
                 (dataset[timestamp_col] >= self.data_table.index[i]) &
-                (dataset[timestamp_col] < (self.data_table.index[i] +
-                                           timedelta(milliseconds=self.granularity)))
+                (dataset[timestamp_col] < (self.data_table.index[i] + self.granularity / 1000))
                 ]
             for col in value_cols:
                 # Take the average value
@@ -85,8 +86,11 @@ class CreateDataset:
         dataset = pd.read_csv(self.base_dir / file)
 
         # Convert timestamps to datetime.
-        dataset[start_timestamp_col] = pd.to_datetime(dataset[start_timestamp_col])
-        dataset[end_timestamp_col] = pd.to_datetime(dataset[end_timestamp_col])
+        # epoch = datetime(1970, 1, 1)
+        # dataset[start_timestamp_col] = dataset[start_timestamp_col].apply(lambda x: epoch + timedelta(seconds=x))
+        # dataset[end_timestamp_col] = dataset[end_timestamp_col].apply(lambda x: epoch + timedelta(seconds=x))
+        # dataset[start_timestamp_col] = pd.to_datetime(dataset[start_timestamp_col])
+        # dataset[end_timestamp_col] = pd.to_datetime(dataset[end_timestamp_col])
 
         # Clean the event values in the dataset
         dataset[value_col] = dataset[value_col].apply(self.clean_name)
@@ -105,12 +109,12 @@ class CreateDataset:
             start = dataset[start_timestamp_col][i]
             end = dataset[end_timestamp_col][i]
             value = dataset[value_col][i]
-            border = (start - timedelta(milliseconds=self.granularity))
+            border = (start - self.granularity/1000)
 
             # get the right rows from our data table
             relevant_rows = self.data_table[
-                (start <= (self.data_table.index + timedelta(milliseconds=self.granularity))) & (
-                            end > self.data_table.index)]
+                (start <= (self.data_table.index + self.granularity/1000)) & (
+                        end > self.data_table.index)]
 
             # and add 1 to the rows if we take the sum
             if aggregation == 'sum':

@@ -7,13 +7,15 @@
 #                                                            #
 ##############################################################
 
-import scipy
 import math
-from sklearn.mixture import GaussianMixture
+
 import numpy as np
 import pandas as pd
+import scipy
+from sklearn.mixture import GaussianMixture
+
 import Python3Code.util.util as util
-import copy
+
 
 # Class for outlier detection algorithms based on some distribution of the data. They
 # all consider only single points per row (i.e. one column).
@@ -30,14 +32,14 @@ class DistributionBasedOutlierDetection:
         mean = data_table[col].mean()
         std = data_table[col].std()
         N = len(data_table.index)
-        criterion = 1.0/(C*N)
+        criterion = 1.0 / (C * N)
 
         # Consider the deviation for the data points.
-        deviation = abs(data_table[col] - mean)/std
+        deviation = abs(data_table[col] - mean) / std
 
         # Express the upper and lower bounds.
-        low = -deviation/math.sqrt(C)
-        high = deviation/math.sqrt(C)
+        low = -deviation / math.sqrt(C)
+        high = deviation / math.sqrt(C)
         prob = []
         mask = []
 
@@ -54,7 +56,6 @@ class DistributionBasedOutlierDetection:
     # Fits a mixture model towards the data expressed in col and adds a column with the probability
     # of observing the value given the mixture model.
     def mixture_model(self, data_table, col):
-
         print('Applying mixture models')
         # Fit a mixture model to our data.
         data = data_table[data_table[col].notnull()][col]
@@ -67,11 +68,12 @@ class DistributionBasedOutlierDetection:
 
         # Create the right data frame and concatenate the two.
         data_probs = pd.DataFrame(
-            np.power(10, probs), index=data.index, columns=[col+'_mixture'])
+            np.power(10, probs), index=data.index, columns=[col + '_mixture'])
 
         data_table = pd.concat([data_table, data_probs], axis=1)
 
         return data_table
+
 
 # Class for distance based outlier detection.
 
@@ -104,12 +106,12 @@ class DistanceBasedOutlierDetection:
         for i in range(0, len(new_data_table.index)):
             # Check what faction of neighbors are beyond dmin.
             frac = (float(sum([1 for col_val in self.distances.iloc[i, :].tolist(
-            ) if col_val > dmin]))/len(new_data_table.index))
+            ) if col_val > dmin])) / len(new_data_table.index))
             # Mark as an outlier if beyond the minimum frequency.
             mask.append(frac > fmin)
         if data_table.get('simple_dist_outlier') is None:
             data_mask = pd.DataFrame(mask, index=new_data_table.index, columns=[
-                                     'simple_dist_outlier'])
+                'simple_dist_outlier'])
             data_table = pd.concat([data_table, data_mask], axis=1)
         else:
             data_table['simple_dist_outlier'] = pd.Series(mask, index=new_data_table.index)
@@ -153,10 +155,10 @@ class DistanceBasedOutlierDetection:
 
     HIGH_VALUE = 10000
 
-   # Compute the local reachability density for a row instance, given a k-distance and set of neighbors.
+    # Compute the local reachability density for a row instance, given a k-distance and set of neighbors.
     def local_reachability_density(self, instance, k, k_distance_i, neighbors_i):
         # Set distances to neighbors to 0.
-        reachability_distances_array = [0]*len(neighbors_i)
+        reachability_distances_array = [0] * len(neighbors_i)
 
         # Compute the reachability distance between i and all neighbors.
         for i, neighbor in enumerate(neighbors_i):
@@ -172,10 +174,10 @@ class DistanceBasedOutlierDetection:
     def k_distance(self, i, k):
         # Simply look up the values in the distance table, select the min_pts^th lowest value and take the value pairs
         # Take min_pts + 1 as we also have the instance itself in there.
-        neighbors = np.argpartition(np.array(self.distances.iloc[i,:]), k+1)[0:(k+1)].tolist()
+        neighbors = np.argpartition(np.array(self.distances.iloc[i, :]), k + 1)[0:(k + 1)].tolist()
         if i in neighbors:
             neighbors.remove(i)
-        return max(self.distances.iloc[i,neighbors]), neighbors
+        return max(self.distances.iloc[i, neighbors]), neighbors
 
     # Compute the local outlier score of our row i given a setting for k.
     def local_outlier_factor_instance(self, i, k):
@@ -194,4 +196,3 @@ class DistanceBasedOutlierDetection:
 
         # Return the average ratio.
         return sum(lrd_ratios_array) / len(neighbors)
-

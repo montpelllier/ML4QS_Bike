@@ -10,6 +10,7 @@
 import numpy as np
 from pykalman import KalmanFilter
 
+
 # Implements the Kalman filter for single columns.
 class KalmanFilters:
 
@@ -18,7 +19,6 @@ class KalmanFilters:
     # is however still useful as it is able to dampen outliers and impute missing values. The new
     # values are appended in a new column.
     def apply_kalman_filter(self, data_table, col):
-
         # Initialize the Kalman filter with the trivial transition and observation matrices.
         kf = KalmanFilter(transition_matrices=[[1]], observation_matrices=[[1]])
 

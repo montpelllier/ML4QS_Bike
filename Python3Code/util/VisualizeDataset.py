@@ -1,4 +1,4 @@
-from util.util import get_chapter
+from Python3Code.util.util import get_chapter
 
 import matplotlib.colors as cl
 import matplotlib.pyplot as plt
@@ -62,11 +62,11 @@ class VisualizeDataset:
 
         f.subplots_adjust(hspace=0.4)
 
-        xfmt = md.DateFormatter('%H:%M')
+        # xfmt = md.DateFormatter('%H:%M')
 
         # Pass through the columns specified.
         for i in range(0, len(columns)):
-            xar[i].xaxis.set_major_formatter(xfmt)
+            # xar[i].xaxis.set_major_formatter(xfmt)
             xar[i].set_prop_cycle(color=['b', 'g', 'r', 'c', 'm', 'y', 'k'])
             # if a column match is specified as 'exact', select the column name(s) with an exact match.
             # If it's specified as 'like', select columns containing the name.
@@ -110,8 +110,9 @@ class VisualizeDataset:
         # Make sure we get a nice figure with only a single x-axis and labels there.
         plt.setp([a.get_xticklabels() for a in f.axes[:-1]], visible=False)
         plt.xlabel('time')
-        self.save(plt)
+
         plt.show()
+        self.save(plt)
 
     def plot_xy(self, x, y, method='plot', xlabel=None, ylabel=None, xlim=None, ylim=None, names=None,
                 line_styles=None, loc=None, title=None):

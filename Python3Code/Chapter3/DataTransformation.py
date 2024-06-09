@@ -9,7 +9,7 @@
 
 from sklearn.decomposition import PCA
 
-import util.util as util
+import Python3Code.util.util as util
 from scipy.signal import butter, lfilter, filtfilt
 
 
