@@ -52,7 +52,7 @@ class CreateDataset:
 
         # Create a table based on the times found in the dataset
         if self.data_table is None:
-            self.create_dataset(min(dataset[timestamp_col]), max(dataset[timestamp_col]), value_cols, prefix)
+            self.create_dataset(0, max(dataset[timestamp_col]), value_cols, prefix)
         else:
             for col in value_cols:
                 self.data_table[str(prefix) + str(col)] = np.nan
