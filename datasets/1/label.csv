@@ -1,0 +1,24 @@
+label_start,label_end,label
+0,184,normal
+184,190,turn right
+190,208,normal
+208,212,turn left
+210,212,brake
+212,215,stop
+215,221,normal
+221,225,turn left
+225,345,normal
+345,353,accelerate
+353,411,normal
+411,416,turn left
+416,426,normal
+426,429,turn right
+429,693,normal
+693,695,brake
+695,699,turn right
+699,708,normal
+708,732,brake
+730,733,turn right
+733,766,normal
+766,768,brake
+768,769,stop
