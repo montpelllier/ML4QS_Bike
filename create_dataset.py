@@ -9,7 +9,7 @@ DATASET_PATH = Path('./datasets/1/')
 RESULT_PATH = Path('./results/')
 RESULT_FNAME = 'dataset1.csv'
 
-GRANULARITIES = [5000, 250]
+GRANULARITIES = [500]
 [path.mkdir(exist_ok=True, parents=True) for path in [DATASET_PATH, RESULT_PATH]]
 
 datasets = []
@@ -47,7 +47,9 @@ for milliseconds_per_instance in GRANULARITIES:
     # DataViz.plot_dataset(dataset, ['acc_', 'gyr_', 'hr_watch_rate', 'light_phone_lux', 'mag_', 'press_phone_', 'label'],
     #                      ['like', 'like', 'like', 'like', 'like', 'like', 'like', 'like'],
     #                      ['line', 'line', 'line', 'line', 'line', 'line', 'points', 'points'])
-    DataViz.plot_dataset(dataset, ['Acceleration', 'Gyroscope', 'Linear Acceleration', "Height", "Velocity", "Direction", 'label'],
+    DataViz.plot_dataset(dataset,
+                         ['Acceleration', 'Gyroscope', 'Linear Acceleration', "Height", "Velocity", "Direction",
+                          'label'],
                          ['like', 'like', 'like', 'like', 'like', 'like', 'like'],
                          ['line', 'line', 'line', 'line', 'line', 'line', 'points'])
     # And print a summary of the dataset.
@@ -58,7 +60,7 @@ for milliseconds_per_instance in GRANULARITIES:
     # dataset.to_csv(RESULT_PATH / f'chapter2_result_{milliseconds_per_instance}')
 
 # Make a table like the one shown in the book, comparing the two datasets produced.
-util.print_latex_table_statistics_two_datasets(datasets[0], datasets[1])
+# util.print_latex_table_statistics_two_datasets(datasets[0], datasets[1])
 
 # Finally, store the last dataset we generated (250 ms).
 dataset.to_csv(RESULT_PATH / RESULT_FNAME)

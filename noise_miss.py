@@ -7,19 +7,17 @@
 #                                                            #
 ##############################################################
 
-import sys
+import argparse
 import copy
 from pathlib import Path
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import argparse
 
-from Python3Code.util.VisualizeDataset import VisualizeDataset
+import pandas as pd
+
 from Python3Code.Chapter3.DataTransformation import LowPassFilter
 from Python3Code.Chapter3.DataTransformation import PrincipalComponentAnalysis
 from Python3Code.Chapter3.ImputationMissingValues import ImputationMissingValues
 from Python3Code.Chapter3.KalmanFilters import KalmanFilters
+from Python3Code.util.VisualizeDataset import VisualizeDataset
 
 # Set up the file names and locations.
 DATA_PATH = Path('./results/')
@@ -153,8 +151,7 @@ def main():
 
         # Determine the sampling frequency.
         fs = float(1000) / milliseconds_per_instance
-        cutoff = 1.5
-
+        cutoff = 0.4 * fs
         for col in periodic_measurements:
             dataset = LowPass.low_pass_filter(
                 dataset, col, fs, cutoff, order=10)

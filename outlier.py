@@ -94,15 +94,12 @@ def main():
     elif FLAGS.mode == 'final':
 
         # We use Chauvenet's criterion for the final version and apply it to all but the label data...
-        for col in [c for c in dataset.columns if not 'label' in c]:
+        for col in [c for c in dataset.columns if 'label' not in c]:
             print(f'Measurement is now: {col}')
             dataset = OutlierDistr.chauvenet(dataset, col, FLAGS.C)
-            DataViz.plot_binary_outliers(
-                dataset, col, col + '_outlier')
-
-            # outliers = dataset[f'{col}_outlier']
-            # dataset.loc[outliers, col] = np.nan
-            dataset.loc[dataset[f'{col}_outlier'], col] = np.nan
+            # DataViz.plot_binary_outliers(
+            #     dataset, col, col + '_outlier')
+            dataset.loc[dataset[f'{col}_outlier'] == True, col] = np.nan
             del dataset[col + '_outlier']
 
         dataset.to_csv(DATA_PATH / RESULT_FNAME)
