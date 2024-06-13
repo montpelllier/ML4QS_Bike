@@ -130,7 +130,7 @@ def main():
         # Now, for the final version.
         # We first start with imputation by interpolation
 
-        for col in [c for c in dataset.columns if not 'label' in c]:
+        for col in [c for c in dataset.columns if 'label' not in c]:
             dataset = MisVal.impute_interpolate(dataset, col)
 
         # And now let us include all LOWPASS measurements that have a form of periodicity (and filter them):
@@ -152,11 +152,15 @@ def main():
         # Determine the sampling frequency.
         fs = float(1000) / milliseconds_per_instance
         cutoff = 0.4 * fs
+        KalFilter = KalmanFilters()
         for col in periodic_measurements:
-            dataset = LowPass.low_pass_filter(
-                dataset, col, fs, cutoff, order=10)
-            dataset[col] = dataset[col + '_lowpass']
-            del dataset[col + '_lowpass']
+            dataset = KalFilter.apply_kalman_filter(dataset, col)
+            dataset[col] = dataset[col + '_kalman']
+            del dataset[col + '_kalman']
+            # dataset = LowPass.low_pass_filter(
+            #     dataset, col, fs, cutoff, order=10)
+            # dataset[col] = dataset[col + '_lowpass']
+            # del dataset[col + '_lowpass']
 
         # We used the optimal found parameter n_pcs = 7, to apply PCA to the final dataset
 

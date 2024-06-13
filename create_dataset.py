@@ -9,7 +9,7 @@ DATASET_PATH = Path('./datasets/1/')
 RESULT_PATH = Path('./results/')
 RESULT_FNAME = 'dataset1.csv'
 
-GRANULARITIES = [500]
+GRANULARITIES = [5000, 500]
 [path.mkdir(exist_ok=True, parents=True) for path in [DATASET_PATH, RESULT_PATH]]
 
 datasets = []
@@ -53,6 +53,9 @@ for milliseconds_per_instance in GRANULARITIES:
                          ['like', 'like', 'like', 'like', 'like', 'like', 'like'],
                          ['line', 'line', 'line', 'line', 'line', 'line', 'points'])
     # And print a summary of the dataset.
+    print(dataset.columns)
+    print(dataset.dtypes)
+    print(dataset.describe())
     util.print_statistics(dataset)
     datasets.append(copy.deepcopy(dataset))
 

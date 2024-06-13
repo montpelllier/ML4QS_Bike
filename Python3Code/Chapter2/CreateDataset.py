@@ -38,7 +38,7 @@ class CreateDataset:
         # timestamps = self.create_timestamps(start_time, end_time)
         time = np.arange(start_time, end_time, self.granularity / 1000)
         # Specify the datatype here to prevent an issue
-        self.data_table = pd.DataFrame(index=time, columns=c, dtype=object)
+        self.data_table = pd.DataFrame(index=time, columns=c, dtype=float)
 
     # Add numerical data, we assume timestamps in the form of nanoseconds from the epoch
     def add_numerical_dataset(self, file, timestamp_col, value_cols, aggregation='avg', prefix=''):
