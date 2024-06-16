@@ -119,7 +119,7 @@ def main():
         #     'Linear Acceleration x (m/s^2)', 'Linear Acceleration y (m/s^2)', 'Linear Acceleration z (m/s^2)'
         # ]
         #
-        # dataset = FreqAbs.abstract_frequency(copy.deepcopy(dataset), periodic_predictor_cols,
+         # dataset = FreqAbs.abstract_frequency(copy.deepcopy(dataset), periodic_predictor_cols,
         #                                      int(float(10000) / milliseconds_per_instance), fs)
         #
         # # Now we only take a certain percentage of overlap in the windows, otherwise our training examples will be too much alike.
