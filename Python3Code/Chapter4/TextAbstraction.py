@@ -33,7 +33,7 @@ class TextAbstraction:
         words = list(filter(lambda x: x != '.', words))
         return words
 
-    # Create a clean set of words which are lower case and do not include any undesired characters.
+    # Create a clean.py set of words which are lower case and do not include any undesired characters.
     # Returns the cleaned set.
     def lower_case_and_filter_chars(self, words):
         new_words = []
@@ -123,7 +123,7 @@ class TextAbstraction:
     # of the n-grams per row and uses that as a value.
     def bag_of_words(self, data_table, cols, n):
 
-        # Identify the words and clean the table.
+        # Identify the words and clean.py the table.
         data_table, words = self.identify_words(data_table, cols, n)
 
         # Create columns for each word.
@@ -143,7 +143,7 @@ class TextAbstraction:
     # of the n-grams per row and uses that as a value.
     def tf_idf(self, data_table, cols, n):
 
-        # Identify the words and clean the table.
+        # Identify the words and clean.py the table.
         data_table, words = self.identify_words(data_table, cols, n)
 
         # Create columns for each word.
@@ -168,7 +168,7 @@ class TextAbstraction:
     # topic. It returns a dataset with columns added for the topics containing the scores per row.
     def topic_modeling(self, data_table, cols, n_topics):
 
-        # Identify the words and clean the table.
+        # Identify the words and clean.py the table.
         data_table, words = self.identify_words(data_table, cols)
 
         # Create a dictionary based on the words we have identified per row.

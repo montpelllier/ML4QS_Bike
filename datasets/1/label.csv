@@ -1,24 +1,68 @@
 label_start,label_end,label
-0,184,normal
-184,190,turn right
-190,208,normal
-208,212,turn left
-210,212,brake
-212,215,stop
-215,221,normal
-221,225,turn left
-225,345,normal
-345,353,accelerate
-353,411,normal
-411,416,turn left
-416,426,normal
-426,429,turn right
-429,693,normal
-693,695,brake
-695,699,turn right
-699,708,normal
-708,732,brake
-730,733,turn right
-733,766,normal
-766,768,brake
-768,769,stop
+0,19,normal
+19,23,turn right
+23,33,normal
+33,37,brake
+37,56,normal
+56,59,turn right
+59,82,normal
+82,86,accelerate
+86,151,normal
+151,153,brake
+153,155,stop
+155,192,normal
+192,194,trun left
+194,196,brake
+196,201,stop
+201,205,normal
+205,209,turn left
+209,234,normal
+234,237,turn right
+237,263,normal
+263,265,turn left
+265,272,normal
+272,274,turn right
+274,304,normal
+304,308,turn left
+308,338,normal
+338,342,turn left
+342,368,normal
+368,374,turn right
+374,404,normal
+404,408,turn right
+408,432,normal
+432,436,turn left
+436,448,normal
+448,452,turn left
+452,455,normal
+455,456,brake
+456,466,stop
+466,493,normal
+493,497,turn left
+497,514,normal
+514,519,accelerate
+519,571,normal
+571,573,brake
+573,574,stop
+574,600,normal
+600,603,turn left
+603,608,normal
+608,611,turn left
+611,625,normal
+625,627,brake
+627,630,stop
+630,636,turn left
+636,653,normal
+653,656,turn right
+656,660,normal
+660,664,turn left
+664,694,normal
+694,697,turn right
+697,707,normal
+707,712,accelerate
+712,716,normal
+716,719,brake
+719,722,turn right
+722,758,normal
+758,761,brake
+761,762,stop

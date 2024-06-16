@@ -109,9 +109,9 @@ def main():
 
         CatAbs = CategoricalAbstraction()
 
-        label_cols = ['labelnormal', 'labelturnright', 'labelturnleft', 'labelbrake', 'labelstop', 'labelaccelerate']
-        dataset = CatAbs.abstract_categorical(dataset, label_cols, ['like'] * len(label_cols), 0.03,
-                                              int(float(5 * 60000) / milliseconds_per_instance), 2)
+        # label_cols = ['labelnormal', 'labelturnright', 'labelturnleft', 'labelbrake', 'labelstop', 'labelaccelerate']
+        # dataset = CatAbs.abstract_categorical(dataset, label_cols, ['like'] * len(label_cols), 0.03,
+        #                                      int(float(5 * 60000) / milliseconds_per_instance), 2)
 
         # periodic_predictor_cols = [
         #     'Acceleration x (m/s^2)', 'Acceleration y (m/s^2)', 'Acceleration z (m/s^2)',
@@ -135,6 +135,7 @@ def main():
         missing_columns = [col for col in dataset.columns if 'temp_std_ws' in col]
         dataset[missing_columns] = dataset[missing_columns].interpolate(method='bfill', axis=0)
 
+        dataset.index.name = 'timestamp'
         dataset.to_csv(DATA_PATH / RESULT_FNAME)
 
         DataViz.plot_dataset(dataset, ['Acceleration x (m/s^2)', 'Gyroscope x (rad/s)', 'Linear Acceleration x (m/s^2)',

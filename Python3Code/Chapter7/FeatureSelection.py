@@ -7,10 +7,10 @@
 #                                                            #
 ##############################################################
 
-from LearningAlgorithms import ClassificationAlgorithms
-from Evaluation import ClassificationEvaluation
-from LearningAlgorithms import RegressionAlgorithms
-from Evaluation import RegressionEvaluation
+from .LearningAlgorithms import ClassificationAlgorithms
+from .Evaluation import ClassificationEvaluation
+from .LearningAlgorithms import RegressionAlgorithms
+from .Evaluation import RegressionEvaluation
 from scipy.stats import pearsonr
 import sys
 import copy
