@@ -1,12 +1,3 @@
-##############################################################
-#                                                            #
-#    Mark Hoogendoorn and Burkhardt Funk (2017)              #
-#    Machine Learning for the Quantified Self                #
-#    Springer                                                #
-#    Chapter 7                                               #
-#                                                            #
-##############################################################
-
 import time
 from pathlib import Path
 
@@ -14,21 +5,21 @@ import pandas as pd
 
 start = time.time()
 
-from Chapter7.PrepareDatasetForLearning import PrepareDatasetForLearning
-from Chapter7.LearningAlgorithms import ClassificationAlgorithms
-from Chapter7.Evaluation import ClassificationEvaluation
-from Chapter7.FeatureSelection import FeatureSelectionClassification
-from util import util
-from util.VisualizeDataset import VisualizeDataset
+from Python3Code.Chapter7.PrepareDatasetForLearning import PrepareDatasetForLearning
+from Python3Code.Chapter7.LearningAlgorithms import ClassificationAlgorithms
+from Python3Code.Chapter7.Evaluation import ClassificationEvaluation
+from Python3Code.Chapter7.FeatureSelection import FeatureSelectionClassification
+from Python3Code.util import util
+from Python3Code.util.VisualizeDataset import VisualizeDataset
 
 # Read the result from the previous chapter, and make sure the index is of the type datetime.
-DATA_PATH = Path('./intermediate_datafiles/')
-DATASET_FNAME = 'chapter5_result.csv'
-RESULT_FNAME = 'chapter7_classification_result.csv'
-EXPORT_TREE_PATH = Path('./figures/crowdsignals_ch7_classification/')
+DATA_PATH = Path('./results/')
+DATASET_FNAME = 'dataset1_result_feature.csv'
+RESULT_FNAME = 'classification_result.csv'
+EXPORT_TREE_PATH = Path('./figures/classification/')
 
-# Next, we declare the parameters we'll use in the algorithms.
-N_FORWARD_SELECTION = 50
+# we declare the parameters we'll use in the algorithms.
+N_FORWARD_SELECTION = 25
 
 try:
     dataset = pd.read_csv(DATA_PATH / DATASET_FNAME, index_col=0)
@@ -105,7 +96,7 @@ start = time.time()
 reg_parameters = [0.0001, 0.001, 0.01, 0.1, 1, 10]
 performance_training = []
 performance_test = []
-## Due to runtime constraints we run the experiment 3 times, yet if you want even more robust data one should increase the repetitions. 
+## Due to runtime constraints we run the experiment 3 times, yet if you want even more robust data one should increase the repetitions.
 N_REPEATS_NN = 3
 
 for reg_param in reg_parameters:

@@ -22,7 +22,7 @@ from Python3Code.util.VisualizeDataset import VisualizeDataset
 # Set up the file names and locations.
 DATA_PATH = Path('./results/')
 DATASET_FNAME = 'dataset1_result_outliers.csv'
-RESULT_FNAME = 'dataset1_result_final.csv'
+RESULT_FNAME = 'dataset1_result_imputation.csv'
 ORIG_DATASET_FNAME = 'dataset1.csv'
 
 

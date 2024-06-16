@@ -41,7 +41,9 @@ def main():
     # Determine the columns we want to experiment on.
     outlier_columns = ['Acceleration x (m/s^2)', 'Acceleration y (m/s^2)', 'Acceleration z (m/s^2)']
     # Create the outlier classes.
+    # outlier detection by distribution
     OutlierDistr = DistributionBasedOutlierDetection()
+    # outlier detection by distance
     OutlierDist = DistanceBasedOutlierDetection()
     # chose one of the outlier methods: chauvenet, mixture, distance or LOF via the argument parser at the bottom of this page.
 
@@ -93,7 +95,7 @@ def main():
 
     elif FLAGS.mode == 'final':
 
-        # We use Chauvenet's criterion for the final version and apply it to all but the label data...
+        # We use Chauvenet's criterion for the final version and apply it to all but the label data
         for col in [c for c in dataset.columns if 'label' not in c]:
             print(f'Measurement is now: {col}')
             dataset = OutlierDistr.chauvenet(dataset, col, FLAGS.C)

@@ -8,17 +8,15 @@
 ##############################################################
 
 from pathlib import Path
+
 import pandas as pd
 
+from Chapter7.Evaluation import RegressionEvaluation
+from Chapter7.FeatureSelection import FeatureSelectionRegression
+from Chapter7.LearningAlgorithms import RegressionAlgorithms
+from Chapter7.PrepareDatasetForLearning import PrepareDatasetForLearning
 from util import util
 from util.VisualizeDataset import VisualizeDataset
-from Chapter7.PrepareDatasetForLearning import PrepareDatasetForLearning
-from Chapter7.LearningAlgorithms import ClassificationAlgorithms
-from Chapter7.LearningAlgorithms import RegressionAlgorithms
-from Chapter7.Evaluation import ClassificationEvaluation
-from Chapter7.Evaluation import RegressionEvaluation
-from Chapter7.FeatureSelection import FeatureSelectionClassification
-from Chapter7.FeatureSelection import FeatureSelectionRegression
 
 # Of course we repeat some stuff from Chapter 3, namely to load the dataset
 
