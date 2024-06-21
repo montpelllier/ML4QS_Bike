@@ -109,13 +109,9 @@ class CreateDataset:
             start = dataset[start_timestamp_col][i]
             end = dataset[end_timestamp_col][i]
             value = dataset[value_col][i]
-            border = (start - self.granularity/1000)
 
             # get the right rows from our data table
-            relevant_rows = self.data_table[
-                (start <= (self.data_table.index + self.granularity/1000)) & (
-                        end > self.data_table.index)]
-
+            relevant_rows = self.data_table[(start <= self.data_table.index) & (end > self.data_table.index)]
             # and add 1 to the rows if we take the sum
             if aggregation == 'sum':
                 self.data_table.loc[relevant_rows.index, str(value_col) + str(value)] += 1
