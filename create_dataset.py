@@ -13,7 +13,8 @@ RESULT_PATH = Path('./results/')
 RESULT_FNAME = 'dataset1.csv'
 
 # Define the granularity of the data
-GRANULARITIES = [5000, 500]
+# GRANULARITIES = [5000, 500]
+GRANULARITIES = [500]
 # Create the result path if it doesn't exist
 [path.mkdir(exist_ok=True, parents=True) for path in [DATASET_PATH, RESULT_PATH]]
 
