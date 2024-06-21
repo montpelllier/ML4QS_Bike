@@ -11,7 +11,7 @@ label_start,label_end,label
 151,153,brake
 153,155,stop
 155,192,normal
-192,194,trun left
+192,194,turn left
 194,196,brake
 196,201,stop
 201,205,normal
