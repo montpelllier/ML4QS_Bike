@@ -11,8 +11,10 @@ from Python3Code.util.VisualizeDataset import VisualizeDataset
 
 # Read the result from the previous chapter, and make sure the index is of the type datetime.
 DATA_PATH = Path('./results/')
-DATASET_FNAME = 'dataset1_result_imputation.csv'
-RESULT_FNAME = 'dataset1_result_feature.csv'
+DATASET_FNAME = 'merged_dataset.csv'
+RESULT_FNAME = 'dataset_result_feature.csv'
+# DATASET_FNAME = 'dataset1_result_imputation.csv'
+# RESULT_FNAME = 'dataset1_result_feature.csv'
 
 
 def print_flags():
