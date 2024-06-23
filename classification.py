@@ -13,8 +13,10 @@ from sklearn.model_selection import GridSearchCV
 
 # Define paths and filenames
 DATA_PATH = Path('./results/')
-DATASET_FNAME = 'dataset1_result_feature.csv'
+DATASET_FNAME = 'dataset_result_feature.csv'
 RESULT_FNAME = 'classification_result.csv'
+# DATASET_FNAME = 'dataset4_result_feature.csv'
+# RESULT_FNAME = 'classification_result4.csv'
 EXPORT_TREE_PATH = Path('./figures/classification/')
 
 # Declare the number of features to select
@@ -27,11 +29,11 @@ except IOError as e:
     print('File not found, try to run previous crowdsignals scripts first!')
     raise e
 
+dataset = dataset[1:]
 # Separate features and target variables
 X = dataset.drop(
     columns=['labelnormal', 'labelturnright', 'labelturnleft', 'labelbrake', 'labelstop', 'labelaccelerate'])
 y = dataset[['labelnormal', 'labelturnright', 'labelturnleft', 'labelbrake', 'labelstop', 'labelaccelerate']].copy()
-
 # Convert multi-label to single label
 y['label'] = y.idxmax(axis=1)
 label_encoder = LabelEncoder()
