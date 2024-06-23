@@ -67,7 +67,7 @@
   {
    "cell_type": "code",
    "execution_count": 5,
-   "id": "6637a07a",
+   "id": "10d0a249",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -149,7 +149,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "C:\\Users\\zithe\\AppData\\Local\\Temp\\ipykernel_9840\\1900650505.py:2: DeprecationWarning: KerasClassifier is deprecated, use Sci-Keras (https://github.com/adriangb/scikeras) instead. See https://www.adriangb.com/scikeras/stable/migration.html for help migrating.\n",
+      "C:\\Users\\zithe\\AppData\\Local\\Temp\\ipykernel_12564\\1900650505.py:2: DeprecationWarning: KerasClassifier is deprecated, use Sci-Keras (https://github.com/adriangb/scikeras) instead. See https://www.adriangb.com/scikeras/stable/migration.html for help migrating.\n",
       "  model = KerasClassifier(build_fn=create_model, epochs=10, batch_size=32)\n"
      ]
     }
@@ -176,26 +176,26 @@
      "text": [
       "Fitting 3 folds for each of 9 candidates, totalling 27 fits\n",
       "Epoch 1/10\n",
-      "165/165 [==============================] - 2s 3ms/step - loss: 1.2242 - accuracy: 0.5510\n",
+      "165/165 [==============================] - 2s 3ms/step - loss: 1.1420 - accuracy: 0.6196\n",
       "Epoch 2/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.5447 - accuracy: 0.8375\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.4522 - accuracy: 0.8770\n",
       "Epoch 3/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.3776 - accuracy: 0.8794\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.2933 - accuracy: 0.9171\n",
       "Epoch 4/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.2947 - accuracy: 0.9090\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.2223 - accuracy: 0.9383\n",
       "Epoch 5/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.2556 - accuracy: 0.9208\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.1981 - accuracy: 0.9408\n",
       "Epoch 6/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.2363 - accuracy: 0.9263\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.1657 - accuracy: 0.9509\n",
       "Epoch 7/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.2074 - accuracy: 0.9350\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.1478 - accuracy: 0.9545\n",
       "Epoch 8/10\n",
-      "165/165 [==============================] - 1s 3ms/step - loss: 0.1856 - accuracy: 0.9463\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.1353 - accuracy: 0.9621\n",
       "Epoch 9/10\n",
-      "165/165 [==============================] - 0s 3ms/step - loss: 0.1752 - accuracy: 0.9461\n",
+      "165/165 [==============================] - 1s 3ms/step - loss: 0.1219 - accuracy: 0.9684\n",
       "Epoch 10/10\n",
-      "165/165 [==============================] - 0s 3ms/step - loss: 0.1495 - accuracy: 0.9526\n",
-      "Best: 0.125143 using {'dropout_rate': 0.4, 'units': 200}\n"
+      "165/165 [==============================] - 1s 4ms/step - loss: 0.1321 - accuracy: 0.9600\n",
+      "Best: 0.125524 using {'dropout_rate': 0.2, 'units': 200}\n"
      ]
     }
    ],
@@ -221,7 +221,7 @@
   {
    "cell_type": "code",
    "execution_count": 13,
-   "id": "c9f75156",
+   "id": "2e0b4aaf",
    "metadata": {},
    "outputs": [
     {
@@ -240,6 +240,36 @@
   {
    "cell_type": "code",
    "execution_count": 14,
+   "id": "5cb9de5e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 3 0 5 0 0 0 0 3 0 0 0 0\n",
+      " 0 0 0 0 0 1 0 0 0 0 0 0 4 0 0 0 0 4 3 0 5 0 0 0 0 0 2 2 0 0 0 2 5 2 0 0 0\n",
+      " 0 2 0 0 5 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n",
+      " 0 4 0 0 0 3 3 0 2 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 1 0 0 0 0 1 4 0 0 2 0 2 0\n",
+      " 0 0 0 0 0 0 0 0 0 0 0 2 0 1 0 0 2 0 0 0 0 0 2 0 0 5 0 0 0 0 0 0 0 1 0 0 0\n",
+      " 0 0 4 0 0 0 2 0 0 0 0 0 3 0 0 0 0 0 2 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0\n",
+      " 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0\n",
+      " 0 1 4 0 0 0 0 2 0 0 0 5 0 1 0 5 0 0 0 0 0 0 2 0 0 0 0 0 2 0 0 0 2 0 0 0 0\n",
+      " 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0\n",
+      " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0\n",
+      " 0 0 0 2 0 0 0 2 0 0 0 0 2 0 0 0 0 0 0 1 4 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 2\n",
+      " 0 0 0 0 0 2 0 1 0 0 0 0 0 0 0 0 0 0 4 0 0 0 4 0 0 4 0 0 0 0 0 0 0 0 0 0 0\n",
+      " 0 0 0 0 0 0 0 1 0 0 0 0 0 0]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(y_test)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
    "id": "783a1f7f",
    "metadata": {},
    "outputs": [
@@ -247,26 +277,25 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Model Accuracy with Selected Features and Grid Search: 0.9082969432314411\n",
+      "Model Accuracy with Selected Features and Grid Search: 0.9126637554585153\n",
       "Classification Report:\n",
       "               precision    recall  f1-score   support\n",
       "\n",
-      "           0       0.97      0.93      0.95       389\n",
-      "           1       0.55      0.85      0.67        13\n",
-      "           2       0.88      0.79      0.84        29\n",
-      "           3       0.62      0.62      0.62         8\n",
-      "           4       0.73      0.92      0.81        12\n",
-      "           5       0.33      0.86      0.48         7\n",
+      "           0       0.98      0.92      0.95       389\n",
+      "           1       0.83      0.77      0.80        13\n",
+      "           2       0.74      0.97      0.84        29\n",
+      "           3       0.40      0.75      0.52         8\n",
+      "           4       0.79      0.92      0.85        12\n",
+      "           5       0.38      0.71      0.50         7\n",
       "\n",
       "    accuracy                           0.91       458\n",
-      "   macro avg       0.68      0.83      0.73       458\n",
+      "   macro avg       0.69      0.84      0.74       458\n",
       "weighted avg       0.93      0.91      0.92       458\n",
       "\n"
      ]
     }
    ],
    "source": [
-    "\n",
     "# Evaluate model performance\n",
     "accuracy = accuracy_score(y_test, y_pred)\n",
     "print(\"Model Accuracy with Selected Features and Grid Search:\", accuracy)\n",
