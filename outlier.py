@@ -10,8 +10,8 @@ from Python3Code.util.VisualizeDataset import VisualizeDataset
 
 # Set up file names and locations.
 DATA_PATH = Path('./results/')
-DATASET_FNAME = 'dataset1.csv'
-RESULT_FNAME = 'dataset1_result_outliers.csv'
+DATASET_FNAME = 'merged_dataset.csv'
+RESULT_FNAME = 'merged_dataset_result_outliers.csv'
 
 
 def print_flags():
